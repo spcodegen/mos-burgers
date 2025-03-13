@@ -24,12 +24,28 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public FoodItem searchById(Integer id) {
+        return mapper.map(repository.findById(id), FoodItem.class);
+    }
+
+    @Override
     public List<FoodItem> getAll() {
         List<FoodItem> foodItemList = new ArrayList<>();
-        List<FoodItemEntity> foodItemRepositoryList = repository.findAll();
-        foodItemRepositoryList.forEach(foodItemEntity -> {
+        List<FoodItemEntity> foodItemEntityList = repository.findAll();
+        foodItemEntityList.forEach(foodItemEntity -> {
             foodItemList.add(mapper.map(foodItemEntity, FoodItem.class));
         });
         return foodItemList;
     }
+
+    @Override
+    public void updateFoodItem(FoodItem foodItem) {
+        repository.save(mapper.map(foodItem, FoodItemEntity.class));
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        repository.deleteById(id);
+    }
+
 }

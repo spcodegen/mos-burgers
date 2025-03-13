@@ -21,7 +21,21 @@ public class ItemController {
 
     @GetMapping("/get-all")
     public List<FoodItem> getAll(){
-        List<FoodItem> all = service.getAll();
-        return all;
+        return service.getAll();
+    }
+
+    @GetMapping("/search-by-id/{id}")
+    public FoodItem searchById(@PathVariable Integer id){
+        return service.searchById(id);
+    }
+
+    @PostMapping("/update")
+    public void updateFoodItem(@RequestBody FoodItem foodItem){
+        service.updateFoodItem(foodItem);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteById(@PathVariable Integer id){
+        service.deleteById(id);
     }
 }
