@@ -37,4 +37,15 @@ public class CategoryServiceImpl implements CategoryService {
     public void searchById(Integer id) {
         repository.findById(id);
     }
+
+    @Override
+    public void updateCategory(ItemCategory category) {
+        repository.save(mapper.map(category,ItemCategoryEntity.class));
+    }
+
+    @Override
+    public void deleteCategory(Integer id) {
+        repository.deleteById(id);
+    }
+
 }

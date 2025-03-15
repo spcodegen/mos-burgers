@@ -16,12 +16,22 @@ public class CategoryController {
     final CategoryService service;
 
     @PostMapping("/add")
-    public void addCategory(@RequestBody ItemCategory itemCategory){
+    public void addCategory(@RequestBody ItemCategory itemCategory) {
         service.addCategory(itemCategory);
     }
+
     @GetMapping("/get-all")
-    public List<ItemCategory> getAll(){
+    public List<ItemCategory> getAll() {
         return service.getAll();
     }
 
+    @PostMapping("/update")
+    public void updateCategory(@RequestBody ItemCategory category) {
+        service.updateCategory(category);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteCategory(@PathVariable Integer id) {
+        service.deleteCategory(id);
+    }
 }

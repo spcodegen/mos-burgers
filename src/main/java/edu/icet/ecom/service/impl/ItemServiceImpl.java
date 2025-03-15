@@ -2,6 +2,7 @@ package edu.icet.ecom.service.impl;
 
 import edu.icet.ecom.dto.FoodItem;
 import edu.icet.ecom.entity.FoodItemEntity;
+import edu.icet.ecom.repository.CategoryRepository;
 import edu.icet.ecom.repository.ItemRepository;
 import edu.icet.ecom.service.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -16,11 +17,20 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
 
     final ItemRepository repository;
+    final CategoryRepository categoryRepository;
     final ModelMapper mapper;
 
     @Override
     public void addFoodItem(FoodItem foodItem) {
-        repository.save(mapper.map(foodItem, FoodItemEntity.class));
+//        FoodItemEntity foodItemEntity = new FoodItemEntity();
+//        foodItemEntity.setName(foodItem.getName());
+//        foodItemEntity.setPrice(foodItem.getPrice());
+//        foodItemEntity.setStock(foodItem.getStock());
+//        foodItemEntity.setDate(foodItem.getDate());
+//        foodItemEntity.setDiscount(foodItem.getDiscount());
+//        foodItemEntity.setItemCategoryEntity(categoryRepository.getById(foodItem.getCategoryId()));
+        FoodItemEntity map = mapper.map(foodItem, FoodItemEntity.class);
+        repository.save(map);
     }
 
     @Override
@@ -40,7 +50,16 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void updateFoodItem(FoodItem foodItem) {
-        repository.save(mapper.map(foodItem, FoodItemEntity.class));
+//        FoodItemEntity foodItemEntity = new FoodItemEntity();
+//        foodItemEntity.setId(foodItem.getId());
+//        foodItemEntity.setName(foodItem.getName());
+//        foodItemEntity.setPrice(foodItem.getPrice());
+//        foodItemEntity.setStock(foodItem.getStock());
+//        foodItemEntity.setDate(foodItem.getDate());
+//        foodItemEntity.setDiscount(foodItem.getDiscount());
+//        foodItemEntity.setItemCategoryEntity(categoryRepository.getById(foodItem.getCategoryId()));
+        FoodItemEntity map = mapper.map(foodItem, FoodItemEntity.class);
+        repository.save(map);
     }
 
     @Override

@@ -6,26 +6,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="food_item")
-public class FoodItemEntity {
+@Table(name = "customer")
+public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private Double price;
-    private Integer stock;
-    private Date date;
-    private Double discount;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
-    private ItemCategoryEntity itemCategoryEntity;
-
+    private String number;
+    private Double loyaltyPoint;
+    private String email;
 }

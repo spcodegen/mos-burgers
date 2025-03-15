@@ -10,4 +10,8 @@ public interface CategoryService {
     List<ItemCategory> getAll();
 
     void searchById(Integer id);
+
+    void updateCategory(ItemCategory category);
+
+    void deleteCategory(Integer id);
 }
